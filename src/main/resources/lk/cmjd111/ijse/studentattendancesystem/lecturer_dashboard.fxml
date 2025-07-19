@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
-    <Label text="Welcome, Lecturer!" layoutX="50" layoutY="50" />
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="lk.cmjd111.ijse.studentattendancesystem.controller.LecturerDashboardController"
+            prefWidth="600" prefHeight="400">
+
+    <Label layoutX="50" layoutY="50" text="Welcome, Lecturer!"
+           style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <Button layoutX="50" layoutY="100" text="Back to Login"
+            fx:id="backButton" prefWidth="150"
+            onAction="#goBackToLogin"/>
 </AnchorPane>
