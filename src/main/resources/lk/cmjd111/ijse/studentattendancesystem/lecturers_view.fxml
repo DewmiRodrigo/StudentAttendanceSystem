@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="lk.cmjd111.ijse.studentattendancesystem.controller.LecturerController"
+      spacing="10" alignment="TOP_CENTER" style="-fx-padding: 20;">
+
+    <Label text="Lecturer Management" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Lecturer ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtLecturerId" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Full Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtFullName" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Email:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtEmail" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Course ID:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="cmbCourseId" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10">
+        <Button text="Save" onAction="#handleAddLecturer"/>
+        <Button text="Update" onAction="#handleUpdateLecturer"/>
+        <Button text="Delete" onAction="#handleDeleteLecturer"/>
+        <Button text="Search" onAction="#handleSearchLecturer"/>
+        <Button text="Clear" onAction="#handleClearFields"/>
+    </HBox>
+
+    <TableView fx:id="tblLecturers" prefHeight="300" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="colLecturerId" text="Lecturer ID" prefWidth="100"/>
+            <TableColumn fx:id="colFullName" text="Full Name" prefWidth="150"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="150"/>
+            <TableColumn fx:id="colCourseId" text="Course ID" prefWidth="100"/>
+        </columns>
+    </TableView>
+    <Button fx:id="btnBack" text="Back to Admin Dashboard" onAction="#handleBack"/>
+
+
+</VBox>

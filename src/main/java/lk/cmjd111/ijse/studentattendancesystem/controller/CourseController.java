@@ -3,11 +3,17 @@ package lk.cmjd111.ijse.studentattendancesystem.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
 import lk.cmjd111.ijse.studentattendancesystem.dao.CourseDAO;
 import lk.cmjd111.ijse.studentattendancesystem.dao.impl.CourseImpl;
 import lk.cmjd111.ijse.studentattendancesystem.model.Course;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -160,6 +166,32 @@ public class CourseController {
         txtDescription.clear();
         txtDuration.clear();
     }
+    @FXML
+    private void handleBack() {
+        try {
+            java.net.URL resource = getClass().getResource("/lk/cmjd111/ijse/studentattendancesystem/admin_dashboard.fxml");
+            if (resource == null) {
+                System.out.println("FXML resource not found!");
+                return;
+            } else {
+                System.out.println("FXML resource found at: " + resource);
+            }
+
+            Stage stage = (Stage) txtCourseId.getScene().getWindow();
+            Parent root = FXMLLoader.load(resource);
+
+
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Admin Dashboard");
+            stage.show();
+
+        } catch (IOException e) {
+            showAlert(Alert.AlertType.ERROR, "Navigation Error", "Failed to load admin dashboard: " + e.getMessage());
+        }
+    }
+
+
 
     private void showAlert(Alert.AlertType type, String title, String message) {
         Alert alert = new Alert(type);
@@ -168,4 +200,5 @@ public class CourseController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
 }

@@ -39,4 +39,5 @@
             <TableColumn fx:id="colDuration" text="Duration" prefWidth="150"/>
         </columns>
     </TableView>
+    <Button text="Back to Dashboard" onAction="#handleBack"/>
 </VBox>
