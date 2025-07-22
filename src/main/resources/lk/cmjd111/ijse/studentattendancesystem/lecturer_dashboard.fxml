@@ -11,13 +11,13 @@
     <Label layoutX="20" layoutY="20" text="Lecturer Dashboard"
            style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
-    <!-- Mark Attendance Button -->
+
     <Button layoutX="20" layoutY="80" text="Mark Attendance"
             onAction="#handleMarkAttendance"
             prefWidth="200" prefHeight="40"
             style="-fx-font-size: 14px;"/>
 
-    <!-- NEW: View Reports Button -->
+
     <Button layoutX="20" layoutY="140" text="View Attendance Reports"
             onAction="#handleViewReports"
             prefWidth="200" prefHeight="40"

@@ -3,15 +3,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.FXCollections?>
-
 <?import java.lang.String?>
+
 <VBox xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="lk.cmjd111.ijse.studentattendancesystem.controller.AttendanceController"
       spacing="10" alignment="TOP_LEFT"
       style="-fx-padding: 20;">
 
-    <Label text="Mark Attendance" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+    <Label text="Mark Course Attendance" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
 
 
     <HBox spacing="10" alignment="CENTER_LEFT">
@@ -21,8 +21,8 @@
 
 
     <HBox spacing="10" alignment="CENTER_LEFT">
-        <Label text="Subject:" prefWidth="80"/>
-        <ComboBox fx:id="cmbSubject" prefWidth="300"/>
+        <Label text="Course:" prefWidth="80"/>
+        <ComboBox fx:id="cmbCourse" prefWidth="300"/>  <!-- Changed from cmbSubject -->
     </HBox>
 
 
@@ -44,6 +44,6 @@
         </ComboBox>
     </HBox>
 
-    <!-- Submit Button -->
+
     <Button text="Submit" onAction="#handleSubmit" prefWidth="100"/>
 </VBox>

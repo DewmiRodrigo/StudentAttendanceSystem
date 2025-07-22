@@ -20,7 +20,7 @@ public class ReportController {
     private ComboBox<String> studentFilterCombo;
 
     @FXML
-    private ComboBox<String> subjectFilterCombo;
+    private ComboBox<String> courseFilterCombo;
 
     @FXML
     private TextArea reportTextArea;
@@ -28,11 +28,12 @@ public class ReportController {
     @FXML
     public void initialize() {
         try {
-            // Load students and subjects into combo boxes
+
             studentFilterCombo.getItems().addAll(AttendanceDAO.getAllStudents());
-            subjectFilterCombo.getItems().addAll(AttendanceDAO.getAllSubjects());
+            courseFilterCombo.getItems().addAll(AttendanceDAO.getAllCourses());
         } catch (SQLException e) {
             e.printStackTrace();
+            reportTextArea.setText("Error loading student/course data.");
         }
     }
 
@@ -42,38 +43,42 @@ public class ReportController {
     }
 
     @FXML
-    private void onFilterBySubject(ActionEvent event) {
+    private void onFilterByCourse(ActionEvent event) {
         updateReport();
     }
 
     @FXML
     private void onClearFilters() {
         studentFilterCombo.getSelectionModel().clearSelection();
-        subjectFilterCombo.getSelectionModel().clearSelection();
+        courseFilterCombo.getSelectionModel().clearSelection();
         updateReport();
     }
 
     private void updateReport() {
         String student = studentFilterCombo.getValue();
-        String subject = subjectFilterCombo.getValue();
+        String course = courseFilterCombo.getValue();
 
         try {
-            List<AttendanceRecord> records = AttendanceDAO.getFilteredAttendance(student, subject);
-
+            List<AttendanceRecord> records = AttendanceDAO.getFilteredAttendance(student, course);
 
             reportTextArea.clear();
 
             if (records.isEmpty()) {
                 reportTextArea.setText("No attendance records found for the selected filters.");
             } else {
+                StringBuilder reportBuilder = new StringBuilder();
+                reportBuilder.append("STUDENT NAME | COURSE NAME | DATE | STATUS\n");
+                reportBuilder.append("------------------------------------------\n");
+
                 for (AttendanceRecord r : records) {
-                    String line = String.format("%s | %s | %s | %s\n",
+                    String line = String.format("%-15s | %-15s | %-10s | %-7s\n",
                             r.getStudentName(),
-                            r.getSubjectName(),
+                            r.getCourseName(),
                             r.getDate(),
                             r.getStatus());
-                    reportTextArea.appendText(line);
+                    reportBuilder.append(line);
                 }
+                reportTextArea.setText(reportBuilder.toString());
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -90,16 +95,20 @@ public class ReportController {
         }
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save Attendance Report");
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Text Files", "*.txt"));
+        fileChooser.setTitle("Save Course Attendance Report");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("CSV Files", "*.csv")
+        );
 
         File file = fileChooser.showSaveDialog(new Stage());
         if (file != null) {
             try (FileWriter writer = new FileWriter(file)) {
                 writer.write(content);
+                reportTextArea.appendText("\n\nReport successfully exported to: " + file.getAbsolutePath());
             } catch (Exception e) {
                 e.printStackTrace();
-                reportTextArea.setText("Error saving file.");
+                reportTextArea.setText("Error saving file: " + e.getMessage());
             }
         }
     }

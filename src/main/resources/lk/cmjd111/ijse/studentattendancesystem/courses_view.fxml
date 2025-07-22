@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="lk.cmjd111.ijse.studentattendancesystem.controller.CourseController"
+      spacing="10" alignment="TOP_CENTER" style="-fx-padding: 20;">
+
+    <Label text="Course Management" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <GridPane hgap="10" vgap="10">
+        <Label text="Course ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtCourseId" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Course Name:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtCourseName" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+        <Label text="Description:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <TextArea fx:id="txtDescription" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+        <Label text="Duration:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <TextField fx:id="txtDuration" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10">
+        <Button text="Add" onAction="#handleAddCourse" />
+        <Button text="Update" onAction="#handleUpdateCourse" />
+        <Button text="Delete" onAction="#handleDeleteCourse" />
+        <Button text="Search" onAction="#handleSearchCourse" />
+        <Button text="Clear" onAction="#handleClearFields" />
+    </HBox>
+
+    <TableView fx:id="tblCourses" prefHeight="300" prefWidth="600">
+        <columns>
+            <TableColumn fx:id="colCourseId" text="Course ID" prefWidth="100"/>
+            <TableColumn fx:id="colCourseName" text="Name" prefWidth="150"/>
+            <TableColumn fx:id="colDescription" text="Description" prefWidth="200"/>
+            <TableColumn fx:id="colDuration" text="Duration" prefWidth="150"/>
+        </columns>
+    </TableView>
+</VBox>

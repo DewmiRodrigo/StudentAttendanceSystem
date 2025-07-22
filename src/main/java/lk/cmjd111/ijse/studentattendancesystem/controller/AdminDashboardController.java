@@ -14,4 +14,14 @@ public class AdminDashboardController {
         Parent root = FXMLLoader.load(getClass().getResource("/lk/cmjd111/ijse/studentattendancesystem/login.fxml"));
         backButton.getScene().setRoot(root);
     }
+
+    @FXML
+    private Button btnManageCourses;  
+
+    @FXML
+    private void handleManageCourses() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/lk/cmjd111/ijse/studentattendancesystem/courses_view.fxml"));
+        backButton.getScene().setRoot(root);
+    }
+
 }

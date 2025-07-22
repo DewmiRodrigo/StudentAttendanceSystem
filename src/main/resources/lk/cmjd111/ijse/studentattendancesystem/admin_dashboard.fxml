@@ -10,8 +10,12 @@
 
     <Label layoutX="50" layoutY="50" text="Welcome, Admin!"
            style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+    <Button layoutX="50" layoutY="160" text="Manage Courses"
+            onAction="#handleManageCourses" prefWidth="150"/>
 
     <Button layoutX="50" layoutY="100" text="Back to Login"
             fx:id="backButton" prefWidth="150"
             onAction="#goBackToLogin"/>
+
+
 </AnchorPane>

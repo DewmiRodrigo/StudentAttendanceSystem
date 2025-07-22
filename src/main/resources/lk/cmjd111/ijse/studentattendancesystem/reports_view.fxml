@@ -9,13 +9,13 @@
       spacing="10" alignment="TOP_LEFT"
       style="-fx-padding: 20;">
 
-    <Label text="Attendance Reports" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+    <Label text="Course Attendance Reports" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
 
     <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Filter by Student:"/>
         <ComboBox fx:id="studentFilterCombo" prefWidth="150" onAction="#onFilterByStudent"/>
-        <Label text="Filter by Subject:"/>
-        <ComboBox fx:id="subjectFilterCombo" prefWidth="150" onAction="#onFilterBySubject"/>
+        <Label text="Filter by Course:"/>
+        <ComboBox fx:id="courseFilterCombo" prefWidth="150" onAction="#onFilterByCourse"/>
         <Button text="Clear Filters" onAction="#onClearFilters"/>
     </HBox>
 

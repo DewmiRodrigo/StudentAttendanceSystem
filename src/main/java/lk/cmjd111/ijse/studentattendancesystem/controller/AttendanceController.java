@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class AttendanceController {
     @FXML private ComboBox<String> cmbStudent;
-    @FXML private ComboBox<String> cmbSubject;
+    @FXML private ComboBox<String> cmbCourse;
     @FXML private ComboBox<String> cmbStatus;
     @FXML private DatePicker datePicker;
 
@@ -16,12 +16,11 @@ public class AttendanceController {
         try {
 
             cmbStudent.getItems().addAll(AttendanceDAO.getAllStudents());
-            cmbSubject.getItems().addAll(AttendanceDAO.getAllSubjects());
+            cmbCourse.getItems().addAll(AttendanceDAO.getAllCourses());
 
 
             datePicker.setValue(LocalDate.now());
-
-
+            cmbStatus.getItems().addAll("Present", "Absent");
             cmbStatus.getSelectionModel().selectFirst();
 
         } catch (SQLException e) {
@@ -33,14 +32,14 @@ public class AttendanceController {
     @FXML
     private void handleSubmit() {
         try {
-            // Validate inputs
+
             if (cmbStudent.getValue() == null || cmbStudent.getValue().isEmpty()) {
                 showAlert("Error", "Please select a student");
                 return;
             }
 
-            if (cmbSubject.getValue() == null || cmbSubject.getValue().isEmpty()) {
-                showAlert("Error", "Please select a subject");
+            if (cmbCourse.getValue() == null || cmbCourse.getValue().isEmpty()) {
+                showAlert("Error", "Please select a course");
                 return;
             }
 
@@ -52,7 +51,7 @@ public class AttendanceController {
 
             boolean isSaved = AttendanceDAO.markAttendance(
                     cmbStudent.getValue(),
-                    cmbSubject.getValue(),
+                    cmbCourse.getValue(),
                     datePicker.getValue().toString(),
                     cmbStatus.getValue()
             );
@@ -60,7 +59,7 @@ public class AttendanceController {
             if (isSaved) {
                 showAlert("Success", "Attendance recorded for:\n" +
                         "Student: " + cmbStudent.getValue() + "\n" +
-                        "Subject: " + cmbSubject.getValue() + "\n" +
+                        "Course: " + cmbCourse.getValue() + "\n" +
                         "Date: " + datePicker.getValue() + "\n" +
                         "Status: " + cmbStatus.getValue());
 

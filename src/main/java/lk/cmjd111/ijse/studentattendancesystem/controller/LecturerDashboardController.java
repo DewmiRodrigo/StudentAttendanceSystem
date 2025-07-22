@@ -21,13 +21,17 @@ public class LecturerDashboardController {
     private void handleMarkAttendance() {
         try {
             URL fxmlUrl = getClass().getResource("/lk/cmjd111/ijse/studentattendancesystem/attendance_mark.fxml");
-            Parent root = FXMLLoader.load(fxmlUrl);
+            if (fxmlUrl == null) {
+                throw new RuntimeException("Attendance marking FXML file not found!");
+            }
 
+            Parent root = FXMLLoader.load(fxmlUrl);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Mark Attendance");
+            stage.setTitle("Mark Course Attendance");
             stage.show();
         } catch (Exception e) {
+            showAlert("Error", "Failed to open attendance marking: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -43,16 +47,15 @@ public class LecturerDashboardController {
             URL fxmlUrl = getClass().getResource("/lk/cmjd111/ijse/studentattendancesystem/reports_view.fxml");
             System.out.println("Loading FXML from: " + fxmlUrl);
             if (fxmlUrl == null) {
-                throw new RuntimeException("FXML file not found! Check the path.");
+                throw new RuntimeException("Reports FXML file not found! Check the path.");
             }
 
             Parent root = FXMLLoader.load(fxmlUrl);
-
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
-            stage.setTitle("Attendance Reports");
+            stage.setTitle("Course Attendance Reports");
         } catch (Exception e) {
-            showAlert("Error", "Failed to load reports: " + e.getMessage());
+            showAlert("Error", "Failed to load course reports: " + e.getMessage());
             e.printStackTrace();
         }
     }
