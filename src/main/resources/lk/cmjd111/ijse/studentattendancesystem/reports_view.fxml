@@ -24,5 +24,6 @@
     <HBox spacing="10">
         <Button text="Export as TXT" onAction="#handleExport"/>
     </HBox>
+    <Button fx:id="btnBack" text="Back" onAction="#handleBack" />
 
 </VBox>

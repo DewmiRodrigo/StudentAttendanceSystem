@@ -2,6 +2,10 @@ package lk.cmjd111.ijse.studentattendancesystem.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
@@ -11,6 +15,7 @@ import lk.cmjd111.ijse.studentattendancesystem.model.AttendanceRecord;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -24,6 +29,7 @@ public class ReportController {
 
     @FXML
     private TextArea reportTextArea;
+    @FXML private Button btnBack;
 
     @FXML
     public void initialize() {
@@ -110,6 +116,19 @@ public class ReportController {
                 e.printStackTrace();
                 reportTextArea.setText("Error saving file: " + e.getMessage());
             }
+        }
+
+    }
+    @FXML
+    private void handleBack() {
+        try {
+            Stage stage = (Stage) btnBack.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("/lk/cmjd111/ijse/studentattendancesystem/admin_dashboard.fxml"));
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
