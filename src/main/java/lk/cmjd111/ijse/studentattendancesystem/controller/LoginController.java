@@ -15,7 +15,7 @@ public class LoginController {
 
     @FXML
     private void handleLogin() throws IOException {
-        // 1. Get user input
+
         String username = usernameField.getText();
         String password = passwordField.getText();
 

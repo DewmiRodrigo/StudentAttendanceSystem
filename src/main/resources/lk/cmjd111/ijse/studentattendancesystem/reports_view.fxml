@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="lk.cmjd111.ijse.studentattendancesystem.controller.ReportController"
+      spacing="10" alignment="TOP_LEFT"
+      style="-fx-padding: 20;">
+
+    <Label text="Attendance Reports" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Filter by Student:"/>
+        <ComboBox fx:id="studentFilterCombo" prefWidth="150" onAction="#onFilterByStudent"/>
+        <Label text="Filter by Subject:"/>
+        <ComboBox fx:id="subjectFilterCombo" prefWidth="150" onAction="#onFilterBySubject"/>
+        <Button text="Clear Filters" onAction="#onClearFilters"/>
+    </HBox>
+
+    <TextArea fx:id="reportTextArea" prefHeight="400" prefWidth="600" editable="false" wrapText="true"/>
+
+    <HBox spacing="10">
+        <Button text="Export as TXT" onAction="#handleExport"/>
+    </HBox>
+
+</VBox>
