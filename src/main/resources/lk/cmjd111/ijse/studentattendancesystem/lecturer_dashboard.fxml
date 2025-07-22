@@ -8,21 +8,11 @@
             fx:controller="lk.cmjd111.ijse.studentattendancesystem.controller.LecturerDashboardController"
             prefWidth="800" prefHeight="600" style="-fx-background-color: #f0f0f0;">
 
-
     <Label layoutX="20" layoutY="20" text="Lecturer Dashboard"
            style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
 
-
     <Button layoutX="20" layoutY="80" text="Mark Attendance"
-            fx:id="markAttendanceBtn" prefWidth="200" prefHeight="40"
+            onAction="#handleMarkAttendance"
+            prefWidth="200" prefHeight="40"
             style="-fx-font-size: 14px;"/>
-
-    <Button layoutX="240" layoutY="80" text="View Students"
-            fx:id="viewStudentsBtn" prefWidth="200" prefHeight="40"
-            style="-fx-font-size: 14px;"/>
-
-
-    <Button layoutX="20" layoutY="550" text="Log Out"
-            fx:id="logoutBtn" prefWidth="100"
-            style="-fx-background-color: #ff6b6b; -fx-text-fill: white;"/>
 </AnchorPane>
