@@ -12,27 +12,36 @@ public class LoginController {
     @FXML private PasswordField passwordField;
     @FXML private Button loginButton;
 
+
     @FXML
     private void handleLogin() throws IOException {
+        // 1. Get user input
         String username = usernameField.getText();
         String password = passwordField.getText();
 
 
-        final String ADMIN_USER = "admin";
-        final String ADMIN_PASS = "admin123";
-        final String LECTURER_USER = "lecturer";
-        final String LECTURER_PASS = "lecturer123";
+        if (username.equals("admin") && password.equals("admin123")) {
+            Parent root = FXMLLoader.load(getClass().getResource("/lk/cmjd111/ijse/studentattendancesystem/admin_dashboard.fxml"));
+            loginButton.getScene().setRoot(root);
+            return;
+        }
 
-        if (username.equals(ADMIN_USER) && password.equals(ADMIN_PASS)) {
-            loadDashboard("/lk/cmjd111/ijse/studentattendancesystem/admin_dashboard.fxml");
+
+        if (username.equals("lecturer") && password.equals("lecturer123")) {
+            Parent root = FXMLLoader.load(getClass().getResource("/lk/cmjd111/ijse/studentattendancesystem/lecturer_dashboard.fxml"));
+            loginButton.getScene().setRoot(root);
+            return;
         }
-        else if (username.equals(LECTURER_USER) && password.equals(LECTURER_PASS)) {
-            loadDashboard("/lk/cmjd111/ijse/studentattendancesystem/lecturer_dashboard.fxml");
-        }
-        else {
-            showAlert("Login Failed", "Invalid username or password!");
-            passwordField.clear();
-        }
+
+
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Login Failed");
+        alert.setHeaderText(null);
+        alert.setContentText("Wrong username or password!");
+        alert.showAndWait();
+
+
+        passwordField.clear();
     }
 
     private void loadDashboard(String fxmlPath) throws IOException {
