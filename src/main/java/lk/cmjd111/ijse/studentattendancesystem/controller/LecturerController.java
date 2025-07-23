@@ -211,6 +211,7 @@ public class LecturerController {
         }
     }
 
+
     private void clearFields() {
         txtLecturerId.clear();
         txtFullName.clear();

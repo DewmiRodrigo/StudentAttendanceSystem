@@ -3,24 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="lk.cmjd111.ijse.studentattendancesystem.controller.LecturerDashboardController"
-            prefWidth="800" prefHeight="600" style="-fx-background-color: #f0f0f0;">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="lk.cmjd111.ijse.studentattendancesystem.controller.LecturerDashboardController"
+      spacing="20" alignment="CENTER" style="-fx-padding: 30; -fx-background-color: #f0f0f0;" prefWidth="800" prefHeight="600">
 
-    <Label layoutX="20" layoutY="20" text="Lecturer Dashboard"
-           style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <Label text="Lecturer Dashboard" style="-fx-font-size: 24; -fx-font-weight: bold;"/>
 
+    <VBox spacing="10" alignment="CENTER">
+        <Button text="Mark Attendance" onAction="#handleMarkAttendance"
+                style="-fx-font-size: 14; -fx-pref-width: 200; -fx-pref-height: 40;"/>
+        <Button text="View Attendance Reports" onAction="#handleViewReports"
+                style="-fx-font-size: 14; -fx-pref-width: 200; -fx-pref-height: 40;"/>
+    </VBox>
 
-    <Button layoutX="20" layoutY="80" text="Mark Attendance"
-            onAction="#handleMarkAttendance"
-            prefWidth="200" prefHeight="40"
-            style="-fx-font-size: 14px;"/>
+    <Button text="Back to Login" onAction="#goBackToLogin" fx:id="btnBackLecturer"
+            style="-fx-font-size: 14; -fx-pref-width: 200; -fx-pref-height: 40;"/>
 
-
-    <Button layoutX="20" layoutY="140" text="View Attendance Reports"
-            onAction="#handleViewReports"
-            prefWidth="200" prefHeight="40"
-            style="-fx-font-size: 14px;"/>
-
-</AnchorPane>
+</VBox>

@@ -15,6 +15,7 @@ public class AdminDashboardController {
     @FXML private Button btnManageCourses;
     @FXML private Button btnManageStudents;
     @FXML private Button btnManageLecturers;
+    @FXML private Button btnManageSchedule;
 
     @FXML
     private void goBackToLogin() throws IOException {
@@ -34,6 +35,11 @@ public class AdminDashboardController {
     @FXML
     private void handleManageLecturers() throws IOException {
         loadView("/lk/cmjd111/ijse/studentattendancesystem/lecturers_view.fxml", "Lecturer Management");
+    }
+
+    @FXML
+    private void handleManageSchedule() throws IOException {
+        loadView("/lk/cmjd111/ijse/studentattendancesystem/schedule_view.fxml", "Schedule Management");
     }
 
     private void loadView(String fxmlPath, String title) throws IOException {

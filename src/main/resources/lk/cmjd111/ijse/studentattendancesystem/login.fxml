@@ -6,18 +6,22 @@
 <AnchorPane xmlns="http://javafx.com/javafx/21"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="lk.cmjd111.ijse.studentattendancesystem.controller.LoginController"
-            prefWidth="600" prefHeight="400">
+            prefWidth="600" prefHeight="400"
+            style="-fx-background-color: #f9f9f9;">
 
-    <Label layoutX="188" layoutY="43" text="Student Attendance System"
-           style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+    <Label layoutX="150" layoutY="40" text="Student Attendance System"
+           style="-fx-font-size: 24; -fx-font-weight: bold; -fx-text-fill: #333333;"/>
 
-    <TextField fx:id="usernameField" layoutX="164" layoutY="168"
-               promptText="Username" prefWidth="250"/>
+    <TextField fx:id="usernameField" layoutX="175" layoutY="140"
+               promptText="Username" prefWidth="250"
+               style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #cccccc; -fx-padding: 8 12;"/>
 
-    <PasswordField fx:id="passwordField" layoutX="164" layoutY="216"
-                   promptText="Password" prefWidth="250"/>
+    <PasswordField fx:id="passwordField" layoutX="175" layoutY="190"
+                   promptText="Password" prefWidth="250"
+                   style="-fx-background-radius: 5; -fx-border-radius: 5; -fx-border-color: #cccccc; -fx-padding: 8 12;"/>
 
-    <Button fx:id="loginButton" layoutX="226" layoutY="288"
+    <Button fx:id="loginButton" layoutX="225" layoutY="260"
             text="Login" prefWidth="150"
+            style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"
             onAction="#handleLogin"/>
 </AnchorPane>

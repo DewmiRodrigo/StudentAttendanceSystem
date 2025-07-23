@@ -20,7 +20,6 @@ public class AttendanceController {
 
 
             datePicker.setValue(LocalDate.now());
-            cmbStatus.getItems().addAll("Present", "Absent");
             cmbStatus.getSelectionModel().selectFirst();
 
         } catch (SQLException e) {

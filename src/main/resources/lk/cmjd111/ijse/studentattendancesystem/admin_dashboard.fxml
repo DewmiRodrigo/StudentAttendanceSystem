@@ -18,10 +18,12 @@
 
         <Button text="Manage Lecturers" onAction="#handleManageLecturers" fx:id="btnManageLecturers"
                 style="-fx-font-size: 14; -fx-pref-width: 200; -fx-pref-height: 40;"/>
+
+        <Button text="Manage Schedule" onAction="#handleManageSchedule" fx:id="btnManageSchedule"
+                style="-fx-font-size: 14; -fx-pref-width: 200; -fx-pref-height: 40;"/>
     </VBox>
 
     <Button text="Back to Login" onAction="#goBackToLogin" fx:id="backButton"
-            style="-fx-font-size: 14; -fx-pref-width: 100;"/>
-
+            style="-fx-font-size: 14; -fx-pref-width: 200; -fx-pref-height: 40;"/>
 
 </VBox>

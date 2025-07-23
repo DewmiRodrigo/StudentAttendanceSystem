@@ -22,7 +22,7 @@
 
     <HBox spacing="10" alignment="CENTER_LEFT">
         <Label text="Course:" prefWidth="80"/>
-        <ComboBox fx:id="cmbCourse" prefWidth="300"/>  <!-- Changed from cmbSubject -->
+        <ComboBox fx:id="cmbCourse" prefWidth="300"/>
     </HBox>
 
 

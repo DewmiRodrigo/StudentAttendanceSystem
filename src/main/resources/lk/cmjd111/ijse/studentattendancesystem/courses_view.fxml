@@ -17,7 +17,7 @@
         <TextField fx:id="txtCourseName" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
 
         <Label text="Description:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-        <TextArea fx:id="txtDescription" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        <TextArea fx:id="txtDescription" GridPane.rowIndex="2" GridPane.columnIndex="1" prefRowCount="2"/>
 
         <Label text="Duration:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
         <TextField fx:id="txtDuration" GridPane.rowIndex="3" GridPane.columnIndex="1"/>

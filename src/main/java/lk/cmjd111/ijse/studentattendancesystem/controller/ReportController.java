@@ -3,9 +3,9 @@ package lk.cmjd111.ijse.studentattendancesystem.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
@@ -29,12 +29,10 @@ public class ReportController {
 
     @FXML
     private TextArea reportTextArea;
-    @FXML private Button btnBack;
 
     @FXML
     public void initialize() {
         try {
-
             studentFilterCombo.getItems().addAll(AttendanceDAO.getAllStudents());
             courseFilterCombo.getItems().addAll(AttendanceDAO.getAllCourses());
         } catch (SQLException e) {
@@ -66,7 +64,6 @@ public class ReportController {
 
         try {
             List<AttendanceRecord> records = AttendanceDAO.getFilteredAttendance(student, course);
-
             reportTextArea.clear();
 
             if (records.isEmpty()) {
@@ -117,17 +114,21 @@ public class ReportController {
                 reportTextArea.setText("Error saving file: " + e.getMessage());
             }
         }
-
     }
+
     @FXML
-    private void handleBack() {
+    private void handleBackLecturer(ActionEvent event) {
         try {
-            Stage stage = (Stage) btnBack.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("/lk/cmjd111/ijse/studentattendancesystem/admin_dashboard.fxml"));
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(
+                    "/lk/cmjd111/ijse/studentattendancesystem/lecturer_dashboard.fxml"
+            ));
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Lecturer Dashboard");
             stage.show();
         } catch (IOException e) {
+            reportTextArea.setText("Navigation Error: " + e.getMessage());
             e.printStackTrace();
         }
     }

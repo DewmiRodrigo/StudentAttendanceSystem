@@ -10,12 +10,27 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 
 public class LecturerDashboardController {
 
     @FXML
     private Button btnViewReports;
+    @FXML
+    private Button btnBackLecturer;
+
+    @FXML
+    private void goBackToLogin() throws IOException {
+        loadView("/lk/cmjd111/ijse/studentattendancesystem/login.fxml", "Login");
+    }
+
+    private void loadView(String fxmlPath, String title) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource(fxmlPath));
+        Stage stage = (Stage) btnBackLecturer.getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.setTitle(title);
+    }
 
     @FXML
     private void handleMarkAttendance() {
@@ -24,7 +39,6 @@ public class LecturerDashboardController {
             if (fxmlUrl == null) {
                 throw new RuntimeException("Attendance marking FXML file not found!");
             }
-
             Parent root = FXMLLoader.load(fxmlUrl);
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -45,15 +59,14 @@ public class LecturerDashboardController {
     private void handleViewReports(ActionEvent event) {
         try {
             URL fxmlUrl = getClass().getResource("/lk/cmjd111/ijse/studentattendancesystem/reports_view.fxml");
-            System.out.println("Loading FXML from: " + fxmlUrl);
             if (fxmlUrl == null) {
-                throw new RuntimeException("Reports FXML file not found! Check the path.");
+                throw new RuntimeException("Reports FXML file not found!");
             }
-
             Parent root = FXMLLoader.load(fxmlUrl);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
             stage.setTitle("Course Attendance Reports");
+            stage.show();
         } catch (Exception e) {
             showAlert("Error", "Failed to load course reports: " + e.getMessage());
             e.printStackTrace();

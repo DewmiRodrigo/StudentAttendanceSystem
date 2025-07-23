@@ -24,7 +24,7 @@
     </GridPane>
 
     <HBox spacing="10">
-        <Button text="Save" onAction="#handleAddLecturer"/>
+        <Button text="Add" onAction="#handleAddLecturer"/>
         <Button text="Update" onAction="#handleUpdateLecturer"/>
         <Button text="Delete" onAction="#handleDeleteLecturer"/>
         <Button text="Search" onAction="#handleSearchLecturer"/>

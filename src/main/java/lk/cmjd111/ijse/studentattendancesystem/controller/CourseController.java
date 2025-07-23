@@ -191,8 +191,6 @@ public class CourseController {
         }
     }
 
-
-
     private void showAlert(Alert.AlertType type, String title, String message) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
